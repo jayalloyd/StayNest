@@ -4,11 +4,15 @@ const mongoose=require("mongoose");
 const Listing= require("./models/listing.js");
 const path=require("path");
 const methodOverride=require("method-override");
+const ejsmate=require("ejs-mate");
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));// to parse data
 app.use(methodOverride("_method"));
+app.engine('ejs', ejsmate);
+app.use(express.static(path.join(__dirname,"/public")));
+
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/StayNest');
 }
