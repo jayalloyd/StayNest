@@ -20,16 +20,16 @@ color:#222222;
 .f-info-links a:hover{
     text-decoration: underline;
 }
-.f-info{
-    text-align: center;
-    height:8rems;
-    background-color: grey;
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-
+.f-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center; /* correct usage */
+  text-align: center;
+  background-color: grey;
+  padding: 1rem 0;
 }
+
 .f-info-socials{
     width:100%;
 }
