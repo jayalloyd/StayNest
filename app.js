@@ -5,6 +5,7 @@ const Listing= require("./models/listing.js");
 const path=require("path");
 const methodOverride=require("method-override");
 const ejsmate=require("ejs-mate");
+const wrapAsync=require("./utils/wrapAsync.js");
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
@@ -12,6 +13,7 @@ app.use(express.urlencoded({extended:true}));// to parse data
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsmate);
 app.use(express.static(path.join(__dirname,"/public")));
+
 
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/StayNest');
@@ -33,13 +35,14 @@ res.render("listings/new.ejs");
 });
 
 //create route
-app.post("/listings",async(req,res)=>{
-   
-const newListing=new Listing(req.body.listing);
+app.post("/listings",wrapAsync(async(req,res)=>{
+ 
+   const newListing=new Listing(req.body.listing);
    await newListing.save();
    res.redirect("/listings");
+})
+);
 
-});
 //show route
 app.get("/listings/:id",async (req,res)=>{
 
@@ -66,6 +69,10 @@ let {id}=req.params;
 let deletedListing= await Listing.findByIdAndDelete(id);
 console.log(deletedListing);
 res.redirect("/listings");
+});
+
+app.use((err,req,res,next)=>{
+    res.send("something went wrong");
 });
 
 app.listen(8080,()=>{
