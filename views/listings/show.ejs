@@ -1,11 +1,11 @@
-<% layout("/layouts/boilerplate")%>
+<% layout("layouts/boilerplate")%>
 <body>
     <div class="row"><div class="col-8 offset-2 mt-3">
         <h3>Listing details:</h3>
        </div>
         <div class="card col-6 offset-2">
    
-  <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+  <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
   <div class="card-body">
     <p class="card-text"><%= listing.title %><br>
         <%= listing.description %><br>
