@@ -27,6 +27,17 @@ main().then(()=>{
     console.log(err);
 });
 
+const validateListing=("/",(req,res,next)=>{
+    let {error}=listingSchema.validate(req.body);//using joi
+ 
+   if(error)
+   {
+    let errMsg=error.details.map((el)=> el.message).join(",");
+    throw new ExpressError(400,errMsg);
+   }else{
+    next();
+   }
+});
 //index route
 app.get("/listings",wrapAsync(async(req,res)=>{
     let allListings=await Listing.find({})
@@ -38,14 +49,10 @@ res.render("listings/new.ejs");
 });
 
 //create route
-app.post("/listings",wrapAsync(async(req,res)=>{
- let result=listingSchema.validate(req.body);//using joi
- console.log(result);  
+app.post("/listings",validateListing,wrapAsync(async(req,res)=>{
+   
  const newListing=new Listing(req.body.listing);
-   if(!result.error)
-   {
-    throw new ExpressError(400,result.error);
-   }
+ 
    await newListing.save();
    res.redirect("/listings");
 })
@@ -65,7 +72,7 @@ const listing=await Listing.findById(id);
 res.render("listings/edit.ejs",{listing});
 }));
 //update route
-app.put("/listings/:id",wrapAsync(async(req,res)=>{
+app.put("/listings/:id",validateListing,wrapAsync(async(req,res)=>{
 let {id}=req.params;
 await Listing.findByIdAndUpdate(id,{...req.body.listing});
  res.redirect(`/listings/${id}`);
