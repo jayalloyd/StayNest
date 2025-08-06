@@ -54,7 +54,7 @@ Copy
 Edit
 npm start
 Then open your browser and go to:
-👉 http://localhost:3000
+👉 http://localhost:8080
 
 📁 Project Structure
 bash
