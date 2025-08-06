@@ -64,8 +64,7 @@ staynest/
 ├── public/            # Static assets (images, CSS)
 ├── app.js             # Main Express app
 └── .env               # Environment variables
-🖼️ Screenshots
-Add your app screenshots here!
+
 
 📚 Learning Goals
 This project helped explore:
