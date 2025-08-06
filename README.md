@@ -35,31 +35,26 @@ git clone https://github.com/jayalloyd/staynest.git
 cd staynest
 
 2. Install dependencies
-bash
-Copy
-Edit
+
+
+
 npm install
 3. Setup environment variables
 Create a .env file in the root directory and add:
 
 env
-Copy
-Edit
+
 PORT=3000
 MONGODB_URI=your_mongodb_connection_string
 SESSION_SECRET=your_session_secret
 4. Run the app
-bash
-Copy
-Edit
+
 nodemon app.js
 Then open your browser and go to:
 👉 http://localhost:8080
 
 📁 Project Structure
-bash
-Copy
-Edit
+
 staynest/
 ├── models/            # Mongoose models (User, Listing, Booking)
 ├── routes/            # Route handlers
