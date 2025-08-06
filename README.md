@@ -52,7 +52,7 @@ SESSION_SECRET=your_session_secret
 bash
 Copy
 Edit
-npm start
+nodemon app.js
 Then open your browser and go to:
 👉 http://localhost:8080
 
