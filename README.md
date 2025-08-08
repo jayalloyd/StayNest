@@ -1,57 +1,49 @@
+# 🏠 StayNest
 
-
-# 🏡 StayNest
-
-**StayNest** is a mini clone of Airbnb — a web application that allows users to browse, book, and list properties for short-term stays. Built using the EJS templating engine, Node.js, MongoDB, and styled with Bootstrap, StayNest is a lightweight project focused on core functionality.
+StayNest is a **mini clone of Airbnb** — a full-stack web application that allows users to browse, book, and list properties for short-term stays.  
+Built with **Node.js**, **Express.js**, **MongoDB**, and the **EJS templating engine**, StayNest focuses on delivering the **core features** of an online booking platform.
 
 ---
 
 ## 🚀 Features
-
-- 🧑 User registration and login
-- 🏘 View all property listings
-- 📝 Create, update, and delete listings (CRUD)
-- 📸 Upload property images 
-
+- 🧑 **User Registration & Login** (with authentication & sessions)
+- 🏘 **View Property Listings**
+- 📝 **Create, Update, and Delete Listings** (CRUD functionality)
+- 📸 **Upload Property Images** using Multer
+- 🔒 **Secure Authentication** with Passport.js
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Frontend:** HTML, CSS, Bootstrap, EJS
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (with Mongoose)
-- **Templating:** EJS
-- **Other:** Multer (for image uploads), Express-Session / Passport (for authentication)
+## 🛠 Tech Stack
+**Frontend:** HTML, CSS, Bootstrap, EJS  
+**Backend:** Node.js, Express.js  
+**Database:** MongoDB (Mongoose)  
+**Other:** Multer (image uploads), Express-Session, Passport.js  
 
 ---
 
 ## 📦 Installation & Setup
 
-### 1. Clone the repository
-
+1️⃣ **Clone the repository**
 ```bash
 git clone https://github.com/jayalloyd/staynest.git
 cd staynest
-
-2. Install dependencies
-
+2️⃣ Install dependencies
 
 
 npm install
-3. Setup environment variables
-Create a .env file in the root directory and add:
+3️⃣ Setup environment variables
+Create a .env file in the root directory:
 
-env
-
-PORT=3000
+PORT=8080
 MONGODB_URI=your_mongodb_connection_string
 SESSION_SECRET=your_session_secret
-4. Run the app
+4️⃣ Run the app
+
 
 nodemon app.js
-Then open your browser and go to:
-👉 http://localhost:8080
+Then open:
+👉 http://localhost:3000
 
 📁 Project Structure
 
@@ -64,21 +56,20 @@ staynest/
 ├── public/            # Static assets (images, CSS)
 ├── app.js             # Main Express app
 └── .env               # Environment variables
-
-
 📚 Learning Goals
-This project helped explore:
+Implementing MVC structure in a Node.js application
 
-Server-side rendering using EJS
-
-MVC structure in a Node.js app
-
-Authentication and session management
+Server-side rendering with EJS
 
 MongoDB CRUD operations with Mongoose
 
-Frontend design with Bootstrap
+Authentication & session management with Passport.js
+
+Integrating Bootstrap for responsive UI design
 
 👤 Author
-JayaRani.Y.S
-Github: jayalloyd
+JayaRani Y.S
+GitHub: jayalloyd
+
+🌐 Live Demo
+(Coming soon) – Once hosted on Render, Vercel, or Heroku, link it here.
