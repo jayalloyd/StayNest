@@ -28,7 +28,7 @@ This project is under active development. New features and improvements are bein
 **Other:** Multer, Express-Session, Passport.js  
 
 ---
-⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
+
 
 ## 📦 Installation & Setup 
 
