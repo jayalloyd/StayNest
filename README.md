@@ -37,4 +37,4 @@ This project is under active development. New features and improvements are bein
 git clone https://github.com/jayalloyd/staynest.git
 cd staynest
 nodemon app.js
-output ->   localhost:8080/listinga
+output ->   localhost:8080/listings
