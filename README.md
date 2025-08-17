@@ -10,6 +10,9 @@ Currently being built using **Node.js**, **Express.js**, **MongoDB**, and **EJS*
 
 This project is under active development. New features and improvements are being added regularly.
 
+
+![output](https://github.com/user-attachments/assets/f41e934e-9af7-44b7-873d-105bfdbf9350)
+
 ---
 
 ## 🎯 Planned Features
