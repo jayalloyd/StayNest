@@ -49,6 +49,8 @@ app.use(session(sessionOptions));
 app.use(flash());//always good to keep flash here before routes
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
+     res.locals.error=req.flash("error");
+    console.log(res.locals.success);
     next();
 });
 app.use("/listings",listings);
