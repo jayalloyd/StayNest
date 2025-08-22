@@ -75,6 +75,12 @@ console.log(deletedListing);
   req.flash("success"," listing deleted");
 res.redirect("/listings");
 }));
-
-
+ 
+router.get("/search/:country", wrapAsync(async (req, res) => {
+    let { country } = req.params;
+    console.log(country);
+    let results = await Listing.find({ country: country });
+    console.log(results);
+    res.render("/listings/showresults.ejs", { allListings: results });
+}));
     module.exports=router;

@@ -10,7 +10,7 @@ const flash=require("connect-flash");
 const ExpressError=require("./utils/ExpressError.js")
 const reviews=require("./routes/review.js");
 const listings=require("./routes/listing.js");
-
+const searchRouter=require("./routes/search.js");
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
@@ -53,12 +53,14 @@ app.use((req,res,next)=>{
     console.log(res.locals.success);
     next();
 });
+app.use("/search", searchRouter);
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews);
-app.all("/{*all}", (req, res, next) => { 
+
+
+app.use((req, res, next) => {
     next(new ExpressError(404, "Page not found!"));
 });
-
 
 app.use((err,req,res,next)=>{
     let{statusCode,message}=err;
