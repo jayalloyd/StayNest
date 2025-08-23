@@ -17,6 +17,10 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));// to parse data
 app.use(express.json());
 app.use(methodOverride("_method"));
+const passport=require("passport");
+const LocalStrategy = require("passport-local");
+const User=require("./models/user.js");
+const userRouter=require("./routes/user.js");
 
 app.engine('ejs', ejsmate);
 // app.use(express.static(path.join(__dirname,"/public")));
@@ -47,15 +51,28 @@ const sessionOptions={
 };
 app.use(session(sessionOptions));
 app.use(flash());//always good to keep flash here before routes
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate));// to authenticate user
+passport.serializeUser(User.serializeUser());// to store user information session
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
      res.locals.error=req.flash("error");
     console.log(res.locals.success);
     next();
 });
+// Basic home route
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 app.use("/search", searchRouter);
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews);
+app.use("/user",userRouter);
+
 
 
 app.use((req, res, next) => {
