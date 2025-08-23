@@ -46,7 +46,7 @@ body{
 .listing-card{
     border:none !important;
     margin-bottom: 2rem;
-
+  transition: transform .2s;
 
 }
 .card-img-top{
@@ -70,6 +70,8 @@ body{
 .card-img-overlay:hover{
     opacity: 0.2;
     background-color: white;
+   
+
 }
 /* show page */
 .show-img{
@@ -79,3 +81,19 @@ body{
     display:flex;
     justify-content: space-between;
 }
+    .custom-card-border {
+        border: 2px solid #fe424d; 
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); 
+
+    }
+    
+   .listing-card:hover{
+
+    transform: scale(1.5);
+    
+   }
+   .listing-card-show{
+     border:none !important;
+    margin-bottom: 2rem;
+   }
