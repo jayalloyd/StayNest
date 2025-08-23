@@ -53,7 +53,8 @@ app.use(session(sessionOptions));
 app.use(flash());//always good to keep flash here before routes
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate));// to authenticate user
+passport.use(new LocalStrategy(User.authenticate()));
+// to authenticate user
 passport.serializeUser(User.serializeUser());// to store user information session
 passport.deserializeUser(User.deserializeUser());
 

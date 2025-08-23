@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
-
+const passport = require("passport");
+const User = require("../models/user.js");
+const wrapAsync = require("../utils/wrapAsync");
 
 // GET route to render the signup form
 router.get("/signup", (req, res) => {
@@ -9,19 +10,48 @@ router.get("/signup", (req, res) => {
 });
 
 // POST route to handle form submission
-router.post("/signup", (req, res) => {
+router.post("/signup", wrapAsync(async (req, res) => {
     // Access the data sent from the form via req.body
-    const { username, email, password } = req.body;
-    console.log("New user signup attempt:");
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+        let { username, email, password } = req.body;
+        console.log("New user signup attempt:");
+        console.log("Username:", username);
+        console.log("Email:", email);
+        console.log("Password:", password);
 
-    
-    res.send("User created successfully! Check the server console for details.");
+        const newUser = new User({ email, username });
+        const registeredUser = await User.register(newUser, password);
+        console.log(registeredUser);
+        req.flash("success", "successfully registered");
+        res.redirect("/listings");
+    } catch (e) {
+        req.flash("error", "user already registered");
+        res.redirect("/user/signup");
+    }
+}
+));
+//get login
+router.get("/login", (req, res) => {
+    res.render("users/login.ejs");
 });
 
+// POST route to handle login with Passport.js authentication
+router.post(
+    "/login", 
+    (req, res, next) => {
+        console.log("Login POST route hit. User attempting to log in:", req.body.username);
+        next();
+    },
+    passport.authenticate("local", { failureRedirect: "/user/login", failureFlash: true }),
+    (req, res) => {
+        console.log("Authentication successful! Redirecting...");
+        req.flash("success", "Welcome back to StayNest!");
+        res.redirect("/listings");
+    }
+);
 
 
 
-module.exports=router;
+
+
+module.exports = router;
