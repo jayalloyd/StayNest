@@ -22,8 +22,14 @@ router.post("/signup", wrapAsync(async (req, res) => {
         const newUser = new User({ email, username });
         const registeredUser = await User.register(newUser, password);
         console.log(registeredUser);
-        req.flash("success", "successfully registered");
-        res.redirect("/listings");
+        req.login(registeredUser,(err)=>{
+            if(err){
+                next(err);
+            }
+            req.flash("success","welcome to staynest");
+            res.redirect("/listings");
+        });
+       
     } catch (e) {
         req.flash("error", "user already registered");
         res.redirect("/user/signup");
