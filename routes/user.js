@@ -34,7 +34,17 @@ router.post("/signup", wrapAsync(async (req, res) => {
 router.get("/login", (req, res) => {
     res.render("users/login.ejs");
 });
+//logout get
 
+router.get("/logout",(req,res,next)=>{
+    req.logout((err)=>{
+        if(err){
+            return next(err);
+        }
+        req.flash("success","logged you out!");
+        res.redirect("/listings");
+    });
+});
 // POST route to handle login with Passport.js authentication
 router.post(
     "/login", 
