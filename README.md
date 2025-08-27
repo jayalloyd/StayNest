@@ -10,8 +10,9 @@ Currently being built using **Node.js**, **Express.js**, **MongoDB**, and **EJS*
 
 This project is under active development. New features and improvements are being added regularly.
 
+![staynest gif](https://github.com/user-attachments/assets/799255e8-7924-415b-a4e9-e4000ec95203)
 
-![output](https://github.com/user-attachments/assets/f41e934e-9af7-44b7-873d-105bfdbf9350)
+
 
 ---
 
