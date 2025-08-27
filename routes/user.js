@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
+const { saveRedirectUrl } = require("../middleware.js");
 
 // GET route to render the signup form
 router.get("/signup", (req, res) => {
@@ -57,12 +58,12 @@ router.post(
     (req, res, next) => {
         console.log("Login POST route hit. User attempting to log in:", req.body.username);
         next();
-    },
+    },saveRedirectUrl,
     passport.authenticate("local", { failureRedirect: "/user/login", failureFlash: true }),
     (req, res) => {
         console.log("Authentication successful! Redirecting...");
         req.flash("success", "Welcome back to StayNest!");
-        res.redirect("/listings");
+        res.redirect(res.locals.redirectUrl);
     }
 );
 
