@@ -8,27 +8,20 @@ const ExpressError = require("../utils/ExpressError.js");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const listingController =require("../controllers/listings.js");
 
-// Index Route
-router.get("/", wrapAsync(listingController.index));
-
 // New Listing Route
 router.get("/new", isLoggedIn,listingController.renderNewForm);
+router.route("/")
+.get(wrapAsync(listingController.index))//index route
+.post(validateListing, isLoggedIn, wrapAsync(listingController.create));//create route
 
-//create route
-router.post("/", validateListing, isLoggedIn, wrapAsync(listingController.create));
+router.route("/:id")
+      .get(wrapAsync(listingController.show))//show route 
+       .put(validateListing, isLoggedIn, isOwner, wrapAsync(listingController.updateListing))//edit route
+       .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing));//delete route
 
-//show route - THIS IS THE CORRECT AND ONLY ONE
-router.get("/:id",wrapAsync(listingController.show));
 
 
-//edit route
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
-//update route
-router.put("/:id", validateListing, isLoggedIn, isOwner, wrapAsync(listingController.updateListing));
-
-//delete route
-router.delete("/:id", isLoggedIn, isOwner, wrapAsync(listingController.deleteListing));
-
 router.get("/search/:country", wrapAsync(listingController.searchListing));
 
 module.exports = router;
