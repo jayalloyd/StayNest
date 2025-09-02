@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate")%>
 <body>
     <h1>Edit listing</h1>    <br>    <br>    <br>
-    <form action="/listings/<%= listing._id%>?_method=PUT" method="POST" novalidate class="needs-validation">
+    <form action="/listings/<%= listing._id%>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">    <label for="title" class="form-label">Title:</label>
         <input type="text"  class="form-control"  value="<%= listing.title%>" id="title" name="listing[title]" required ><div class="valid-feedback"> Title looks good!</div></div>
 <div class="mb-3"> <label  class="form-label" for="description">description</label>
@@ -10,8 +10,11 @@
    <div class="mb-3"><label  class="form-label" for="price">Price:</label>
         <input type="text"   class="form-control" value="<%= listing.price%>" id="price" name="listing[price]" type="number" required><div class="invalid-feedback"> please enter a valid price</div></div>
     
-<div class="mb-3"><label for="image" class="form-label">Image</label>
-        <input type="text" class="form-control"  value="<%= listing.image%>" id="image" name="listing[image]" required><div class="valid-feedback">Image looks good!</div></div>
+        <div class="mb-3">
+            Original Listing Image
+       <img src="<%=originalImageUrl%>" ></div>
+<div class="mb-3"><label for="image" class="form-label">Upload a new Image</label>
+        <input type="file" class="form-control"   id="image" name="listing[image]" ><div class="valid-feedback">Looks Good!</div></div>
 
   <div class="mb-3"> <label class="form-label" for="location">location</label>
         <input type="text" class="form-control value="<%= listing.location%>" id="location" name="listing[location]" required><div class="valid-feedback"> location perfect!</div></div>

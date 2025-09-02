@@ -1,7 +1,13 @@
 const Listing=require("../models/listing")
 module.exports.index = async (req,res)=>{
-   
-    let allListings = await Listing.find({});
+    let { category } = req.query; 
+    if (category) {
+        // Find listings that match the requested category
+        allListings = await Listing.find({ category: category });
+    } else {
+        // If no category is specified, show all listings
+        allListings = await Listing.find({});
+    }
     res.render("listings/index.ejs", { allListings });
 };
 module.exports.renderNewForm=async(req, res) => {
@@ -24,8 +30,11 @@ module.exports.show=  async(req, res) => {
     res.render("listings/show.ejs", { listing });
 };
 module.exports.create=async (req, res) => {
+    let url=req.file.path;
+    let filename=req.file.filename;
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
+    newListing.image={url,filename};
     await newListing.save();
     req.flash("success", "new listing created");
     res.redirect("/listings");
@@ -37,12 +46,21 @@ module.exports.renderEditForm=async (req, res) => {
         req.flash("error", "Page not found");
         return res.redirect("/listings");
     }
-    res.render("listings/edit.ejs", { listing });
+    let originalImageUrl=listing.image.url;
+    originalImageUrl=originalImageUrl.replace("/upload","/upload/w_250");
+    res.render("listings/edit.ejs", { listing,originalImageUrl });
 };
 module.exports.updateListing=async (req, res) => {
     let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-    req.flash("success", "listing updated");
+   let listing= await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+     
+   if(typeof req.file !== "undefined"){
+    let url=req.file.path;
+    let filename=req.file.filename;
+    listing.image={url,filename};
+    await listing.save();
+   }
+   req.flash("success", "listing updated");
     res.redirect(`/listings/${id}`);
 };
 module.exports.deleteListing=async (req, res) => {

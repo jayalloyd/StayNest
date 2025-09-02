@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+require('dotenv').config();
+}
+
 const express = require("express");
 const app= express();
 const mongoose=require("mongoose");
@@ -6,6 +10,7 @@ const path=require("path");
 const methodOverride=require("method-override");
 const ejsmate=require("ejs-mate");
 const session=require("express-session");
+const MongoStore = require('connect-mongo');
 const flash=require("connect-flash");
 const ExpressError=require("./utils/ExpressError.js")
 const reviews=require("./routes/review.js");
@@ -14,7 +19,8 @@ const searchRouter=require("./routes/search.js");
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
-app.use(express.urlencoded({extended:true}));// to parse data
+app.use(express.
+    urlencoded({extended:true}));// to parse data
 app.use(express.json());
 app.use(methodOverride("_method"));
 const passport=require("passport");
@@ -26,20 +32,30 @@ app.engine('ejs', ejsmate);
 // app.use(express.static(path.join(__dirname,"/public")));
 
 
-
+const dbUrl=process.env.ATLASDB_URL;
 
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/StayNest');
+    await mongoose.connect(dbUrl);
 }
 main().then(()=>{
     console.log("connected to db");
 }).catch((err)=>{
     console.log(err);
 });
+const store= MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret:process.env.SECRET
+    },
+    touchAfter:24*3600,
 
-
+});
+store.on("error",()=>{
+    console.log("error in mongosession store",err);
+});
 const sessionOptions={
-    secret:"mysupersecretcode",
+    store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -49,6 +65,7 @@ const sessionOptions={
     },
 
 };
+
 app.use(session(sessionOptions));
 app.use(flash());//always good to keep flash here before routes
 app.use(passport.initialize());
