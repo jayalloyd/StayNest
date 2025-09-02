@@ -1,44 +1,57 @@
-# 🏠 StayNest (Work in Progress)
+🏠 StayNest
 
-StayNest is a **mini clone of Airbnb** — a full-stack web application where users can browse, book, and list properties for short-term stays.  
-Currently being built using **Node.js**, **Express.js**, **MongoDB**, and **EJS**.  
+StayNest is a mini clone of Airbnb — a full-stack web application where users can browse, book, and list properties for short-term stays.
+Built using Node.js, Express.js, MongoDB, and EJS.
 
----
+🚧 Project Status
 
-## 🚧 Project Status
-![Status](https://img.shields.io/badge/status-in%20progress-yellow)
+This project is now finished. 🎉
 
-This project is under active development. New features and improvements are being added regularly.
+✨ Features
 
-![staynest gif](https://github.com/user-attachments/assets/799255e8-7924-415b-a4e9-e4000ec95203)
+🧑 User registration & login
 
+🏘 View all property listings
 
+📝 Create, update, and delete listings (CRUD)
 
----
+📸 Upload property images (via Multer)
 
-## 🎯 Planned Features
-- 🧑 User registration & login
-- 🏘 View all property listings
-- 📝 Create, update, and delete listings (CRUD)
-- 📸 Upload property images (Multer)
-- 🔒 Authentication & session management (Passport.js)
+🔒 Authentication & session management (via Passport.js)
 
----
+🛠 Tech Stack
 
-## 🛠 Tech Stack
-**Frontend:** HTML, CSS, Bootstrap, EJS  
-**Backend:** Node.js, Express.js  
-**Database:** MongoDB (Mongoose)  
-**Other:** Multer, Express-Session, Passport.js  
+Frontend: HTML, CSS, Bootstrap, EJS
+Backend: Node.js, Express.js
+Database: MongoDB (Mongoose)
+Other: Multer, Express-Session, Passport.js
 
----
+📦 Installation & Setup
 
+1️⃣ Clone the repository
 
-## 📦 Installation & Setup 
-
-1️⃣ **Clone the repository**
-```bash
 git clone https://github.com/jayalloyd/staynest.git
 cd staynest
+
+
+2️⃣ Install dependencies
+
+npm install
+
+
+3️⃣ Setup environment variables
+Create a .env file in the root directory and add the following:
+
+MONGO_URI=your_mongo_connection_string
+SESSION_SECRET=your_secret_key
+PORT=8080
+
+
+4️⃣ Run the application
+
 nodemon app.js
-output ->   localhost:8080/listings
+
+
+5️⃣ Visit in browser
+
+http://localhost:8080/listings
