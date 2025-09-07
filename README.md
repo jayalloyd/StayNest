@@ -6,6 +6,8 @@ Built using Node.js, Express.js, MongoDB, and EJS.
 🚧 Project Status
 
 This project is now finished. 🎉
+
+
 ⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
 
 ✨ Features
