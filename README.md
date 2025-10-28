@@ -9,8 +9,6 @@ This project is now finished. 🎉
 
 Live At-> https://staynest-0xle.onrender.com
 
-Demo Video URL: https://www.youtube.com/watch?v=CAeoknXj_0w
-
 
 ⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
 
