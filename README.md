@@ -30,10 +30,20 @@ https://github.com/user-attachments/assets/71f1c8a0-1a79-465e-bb10-8533bdbad419
 
 🛠 Tech Stack
 
-Frontend: HTML, CSS, Bootstrap, EJS
-Backend: Node.js, Express.js
-Database: MongoDB (Mongoose)
-Other: Multer, Express-Session, Passport.js
+### Frontend
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![EJS](https://img.shields.io/badge/ejs-%23B4CA65.svg?style=for-the-badge&logo=ejs&logoColor=black)
+
+### Backend
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Passport.js](https://img.shields.io/badge/passport.js-%2334E27A.svg?style=for-the-badge&logo=passport&logoColor=white)
+
+### Database & Storage
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
 
 📦 Installation & Setup
 
