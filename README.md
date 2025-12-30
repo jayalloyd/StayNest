@@ -3,17 +3,20 @@
 StayNest is a mini clone of Airbnb — a full-stack web application where users can browse, book, and list properties for short-term stays.
 Built using Node.js, Express.js, MongoDB, and EJS.
 
-🚧 Project Status
 
-This project is now finished. 🎉
+##
+Note:  Since this is a full-stack application with sensitive logic, the live deployment is private to prevent security exploits. Please see the video walkthrough below for a full feature demo.
+##
 
-
-Output Demo: 
+## Output Demo: 
 
 
 https://github.com/user-attachments/assets/71f1c8a0-1a79-465e-bb10-8533bdbad419
 
 
+## 🚧 Project Status
+
+This project is now finished. 🎉
 ⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
 
 ## 🧠 Technical Challenges & Solutions
