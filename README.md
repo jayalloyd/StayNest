@@ -28,8 +28,10 @@ Building a full-stack rental platform surfaced several architectural challenges.
 **The Solution:** I integrated **Cloudinary** using a buffer-to-stream approach. Instead of saving files locally, I used `multer` to store images in memory as buffers, which are then streamed directly to Cloudinary. This ensures the application remains scalable and prevents "ghost files" from accumulating on the server.
 
 ### 2. Secure Authentication (Passport.js + Sessions)
-**The Challenge:** Deciding between LocalStorage (XSS vulnerable) and more secure alternatives for persistent login.
-**The Solution:** I opted for **Passport.js with Session-based authentication**. By using `connect-mongo` to store sessions in MongoDB and `express-session` to manage cookies, I ensured that user credentials never touch the client-side storage. This provides a higher layer of security against XSS attacks compared to standard JWT/LocalStorage implementations.
+
+The Challenge: Deciding between LocalStorage (XSS vulnerable) and more secure alternatives for persistent login.
+
+The Solution: I opted for Passport.js with Session-based authentication. By using express-session configured with httpOnly cookies, I ensured that the session ID is inaccessible to client-side JavaScript. This effectively mitigates the risk of session hijacking via XSS attacks, a common vulnerability in standard JWT/LocalStorage implementations.
 
 ### 3. Complex Data State (Booking Logic)
 **The Challenge:** Managing the relationship between Listings, Users, and Bookings while maintaining data integrity.
@@ -79,6 +81,14 @@ npm install
 
 3️⃣ Setup environment variables
 Create a .env file in the root directory and add the following:
+
+🔑 Environment Variables
+
+To run this project, you will need to add the following variables to your `.env` file:
+
+`CLOUD_NAME`, `CLOUD_API_KEY`, `CLOUD_API_SECRET` (Cloudinary)  
+`DB_URL` (MongoDB Connection string)  
+`SECRET` (For express-session)
 
 MONGO_URI=your_mongo_connection_string
 SESSION_SECRET=your_secret_key
