@@ -4,9 +4,6 @@ StayNest is a mini clone of Airbnb — a full-stack web application where users 
 Built using Node.js, Express.js, MongoDB, and EJS.
 
 
-##
-Note:  Since this is a full-stack application with sensitive logic, the live deployment is private to prevent security exploits. Please see the video walkthrough below for a full feature demo.
-##
 
 ## Output Demo: 
 
@@ -19,23 +16,7 @@ https://github.com/user-attachments/assets/71f1c8a0-1a79-465e-bb10-8533bdbad419
 This project is now finished. 🎉
 ⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
 
-## 🧠 Technical Challenges & Solutions
 
-Building a full-stack rental platform surfaced several architectural challenges. Here is how I navigated them:
-
-### 1. Robust Image Management (Cloudinary)
-**The Challenge:** Handling multi-image uploads without slowing down the server or cluttering the local filesystem.
-**The Solution:** I integrated **Cloudinary** using a buffer-to-stream approach. Instead of saving files locally, I used `multer` to store images in memory as buffers, which are then streamed directly to Cloudinary. This ensures the application remains scalable and prevents "ghost files" from accumulating on the server.
-
-### 2. Secure Authentication (Passport.js + Sessions)
-
-The Challenge: Deciding between LocalStorage (XSS vulnerable) and more secure alternatives for persistent login.
-
-The Solution: I opted for Passport.js with Session-based authentication. By using express-session configured with httpOnly cookies, I ensured that the session ID is inaccessible to client-side JavaScript. This effectively mitigates the risk of session hijacking via XSS attacks, a common vulnerability in standard JWT/LocalStorage implementations.
-
-### 3. Complex Data State (Booking Logic)
-**The Challenge:** Managing the relationship between Listings, Users, and Bookings while maintaining data integrity.
-**The Solution:** I designed a relational-style schema within MongoDB using **Object Document Mapping (ODM)**. By using `.populate()` on the backend, I managed to keep the frontend state clean. For "Bookings," I implemented server-side validation to ensure a user cannot book their own listing and that dates do not overlap, keeping the UI in sync with the actual availability in the database.
  
 ## ✨ Features
 
