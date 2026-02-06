@@ -14,7 +14,6 @@ https://github.com/user-attachments/assets/71f1c8a0-1a79-465e-bb10-8533bdbad419
 ## 🚧 Project Status
 
 This project is now finished. 🎉
-⚡ Note: This project was built as part of the Apna College Delta Web Development Course. The main goal was to practice full-stack development concepts. I extended/customized some parts to improve my learning.
 
 
  
