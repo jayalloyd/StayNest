@@ -46,6 +46,27 @@ This project is now finished. 🎉
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
 
+## 🏗️ System Architecture
+
+```mermaid
+graph LR
+    subgraph Browser
+        A[User/Client]
+    end
+
+    subgraph Node_Express_Server
+        B[Routes] --> C[Middleware/Auth]
+        C --> D[Controllers]
+        D --> E[EJS Templates]
+        E -->|Rendered HTML| A
+    end
+
+    subgraph Data_Storage
+        D --> F[(MongoDB Atlas)]
+        D --> G[Cloudinary - Images]
+    end
+```
+
 ## 📦 Installation & Setup
 
 1️⃣ Clone the repository
