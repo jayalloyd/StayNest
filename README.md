@@ -50,6 +50,15 @@ This project is now finished. 🎉
 
 [🏠 StayNest.pdf](https://github.com/user-attachments/files/25937014/StayNest.pdf)
 
+My technical journey:
+
+https://jayalloyd.hashnode.dev/staynest-project-complete-a-full-stack-airbnb-clone
+
+https://jayalloyd.hashnode.dev/staynest-progress-update-2
+
+https://jayalloyd.hashnode.dev/staynest-progress-update-building-a-mini-airbnb-from-scratch
+
+
 ## 🏗️ System Architecture
 
 ```mermaid
